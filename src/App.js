@@ -1,25 +1,70 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import { isMobile } from 'react-device-detect';
+
 import './App.css';
 
-function App() {
+import { listBreeds, getImages } from './api/dogs';
+import Filter from './components/Filter/Filter';
+import Gallery from './components/Gallery/Gallery';
+
+export default function App() {
+  const [breeds, setBreeds] = useState([]);
+  const [filters, setFilters] = useState([]);
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    listBreeds().then((breeds) => {
+      setBreeds(breeds);
+    });
+  }, []);
+
+  const handleDelete = (breed) => {
+    const index = filters.findIndex((b) => b === breed);
+    if (index >= 0) {
+      const list = filters;
+      list.splice(index, 1);
+      setFilters(list);
+      setImages(
+        images.filter((image) => !image.includes(breed.replace(' ', '-'))),
+      );
+    }
+  };
+
+  const handleAppend = (breed) => {
+    const index = filters.findIndex((b) => b === breed.name);
+    if (index < 0) {
+      const list = [...filters, breed.name];
+      setFilters(list);
+      getImages(breed.path, isMobile ? 4 : 5).then((newImages) => {
+        setImages(newImages.concat(images));
+      });
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <div className='App'>
+      <header className='App-header'>
+        <a href='./'>
+          <img src='./dog-api-logo.svg' className='App-logo' alt='dog' />
+          <h1>Dog API</h1>
         </a>
       </header>
+      <Filter
+        options={breeds}
+        breeds={filters}
+        handleAppend={handleAppend}
+        handleDelete={handleDelete}
+      ></Filter>
+      <Gallery images={images} filters={filters}></Gallery>
+      <div className='App-Footer'>
+        <p>
+          Este proyecto usa un API pública para obtener las imágenes, la que
+          puedes consultar{' '}
+          <a href='https://dog.ceo/dog-api/' target='_blank' rel='noreferrer'>
+            aquí
+          </a>
+        </p>
+      </div>
     </div>
   );
 }
-
-export default App;

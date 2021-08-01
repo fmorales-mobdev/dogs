@@ -68,3 +68,33 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Si llegaste hasta aquí, te cuento un par de cosas
+
+Todo lo anterior es el README por defecto de React, pero lo importante es:
+
+### Ejecución local
+
+Ejecuta el proyecto en el puerto 3000 de loccalhost y puedes ir probando tus cambios "en vivo". Edita un archivo y al guardar se sincroniza.
+
+```
+npm run start
+```
+
+### Deploy en servidor
+
+Puedes editar el valor "homepage" en el archivo _package.json_ para construir una versión que puedas subir en tu servidor. por ejemplo, yo hice uno que puedes revisar en [https://gsalazar.cl/dogs](https://gsalazar.cl/dogs)
+
+```
+npm run build
+```
+
+### Ejecución de pruebas
+
+Ejecuta los archivos de test que encuentre en el proyecto. Si quieres obtener la cobertura del código, agrega las opciones "-- --covreage" (son 2 veces --)
+
+```
+npm run test -- --coverage
+```
+
+Esto te genera la carpeta _coverage_ en la raíz del proyecto para revisar el código cubierto por tus pruebas.
