@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+//este mapeo podría moverse al módulo api/dogs.js
 const getBreed = (url) => {
   const path = url.split('/');
   return path[path.length - 2].replace('-', ' ');
@@ -41,6 +43,7 @@ export default function Gallery(props) {
   const [images, setImages] = useState([]);
   const classes = useStyles();
 
+  //Esto agrega una dependencia con el componente Filter.js y con el modulo api/dogs.js, cuando podría ser un componente totalmente independiente
   useEffect(() => {
     if (!props.filters.length)
       getRandomImages().then((images) => {

@@ -26,6 +26,7 @@ const mapBreeds = (breeds) => {
 
 export const listBreeds = async () => {
   try {
+    //ojo con los nombres "list" de hecho no es una lista, "response" o "breedListResponse" pudiesen ser nombres más apropiados
     const list = (await API.get('api/breeds/list/all')).data;
     return mapBreeds(list.message);
   } catch (error) {
@@ -34,6 +35,7 @@ export const listBreeds = async () => {
   }
 };
 
+//Podría tener un mapper tal como lo tiene "listBreeds" y mover la lógica de mapeo que esta en Gallery.js para acá
 export const getRandomImages = async (count = 20) => {
   try {
     const list = (await API.get(`api/breeds/image/random/${count}`)).data;

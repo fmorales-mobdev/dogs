@@ -7,6 +7,8 @@ import { listBreeds, getImages } from './api/dogs';
 import Filter from './components/Filter/Filter';
 import Gallery from './components/Gallery/Gallery';
 
+//1- Hubiese sido deseable usar la API de Contexto de React mover la lógica de handleDelete y handleAppend fuera de este componente
+//2- No tiene tests
 export default function App() {
   const [breeds, setBreeds] = useState([]);
   const [filters, setFilters] = useState([]);
@@ -19,6 +21,7 @@ export default function App() {
   }, []);
 
   const handleDelete = (breed) => {
+    //Las estructuras de datos indexadas suelen ser mejores para evitar duplicidad e iteración, en el caso de js podría ser un objeto simple o un Set
     const index = filters.findIndex((b) => b === breed);
     if (index >= 0) {
       const list = filters;
@@ -31,6 +34,7 @@ export default function App() {
   };
 
   const handleAppend = (breed) => {
+    //Las estructuras de datos indexadas suelen ser mejores para evitar duplicidad e iteración, en el caso de js podría ser un objeto simple o un Set
     const index = filters.findIndex((b) => b === breed.name);
     if (index < 0) {
       const list = [...filters, breed.name];

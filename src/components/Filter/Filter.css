@@ -6,6 +6,7 @@
   padding: 1em;
   display: inline-block;
 }
+/* podría haber usado solo padding: 1em 1em 1em 5px; */
 .Filter .input-wrapper {
   padding: 1em;
   padding-left: 5px;

@@ -19,6 +19,7 @@ afterEach(() => {
   container = null;
 });
 
+//Falta validar casos, vacío y más de 1 elemento
 it('renderiza imagenes según filtro', async () => {
   const fakeFilters = ['bulldog boston'];
   const fakeImages = ['url/bulldog-boston/image.jpg'];
@@ -31,6 +32,7 @@ it('renderiza imagenes según filtro', async () => {
   expect(
     container.querySelector('.MuiImageListItemBar-title').textContent,
   ).toBe(fakeFilters[0]);
+  //Falta validar que el src de la imagen esté bien definido
 });
 
 it('renderiza imagenes aleatorias', async () => {

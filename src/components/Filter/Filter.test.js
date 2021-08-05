@@ -17,6 +17,8 @@ afterEach(() => {
   container = null;
 });
 
+//1- Hubiese sido bueno validar también el comportamiento para cuando tiene más de 1 elemento o 0 elementos
+//2- Falta validar que fakeHandleDelete y fakeHandleAppend se ejecuten efectivamente, jest.fn() por ejemplo para revisar que al hacer click se ejecuten
 it('renderiza chips según filtro', async () => {
   const fakeOptions = [{ label: 'husky' }];
   const fakeBreeds = ['husky'];

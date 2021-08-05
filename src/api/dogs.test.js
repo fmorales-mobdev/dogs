@@ -16,6 +16,7 @@ it('obtiene lista de razas', async () => {
     }),
   );
 
+  //el test podría ser más concreto y comparar con la lista de salida que realmente espero
   expect((await listBreeds()).length).toBe(7);
 });
 
