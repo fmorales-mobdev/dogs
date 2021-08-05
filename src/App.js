@@ -7,7 +7,7 @@ import { listBreeds, getImages } from './api/dogs';
 import Filter from './components/Filter/Filter';
 import Gallery from './components/Gallery/Gallery';
 
-//1- Hubiese sido deseable usar la API de Contexto de React mover la lógica de handleDelete y handleAppend fuera de este componente
+//1- Hubiese sido deseable usar la API de Contexto de React para mover la lógica de handleDelete y handleAppend fuera de este componente
 //2- No tiene tests
 export default function App() {
   const [breeds, setBreeds] = useState([]);
